@@ -1,9 +1,10 @@
 import { ReactElement } from "react";
+import { Sidebar } from "../misc/Sidebar";
 
 export function DashboardLayout({ children }: { children: ReactElement }) {
     return (
         <>
-            <nav>Hello, World</nav>
+            <Sidebar />
             <>{children}</>
         </>
     )
