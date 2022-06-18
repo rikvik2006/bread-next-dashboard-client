@@ -1,3 +1,8 @@
+.layout {
+    height: calc(100% - 120px);
+    margin-left: 120px;
+}
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -24,4 +29,25 @@
 
 .avatar {
     border-radius: 50%;
+}
+
+.appbar {
+    background-color: #121212;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 120px;
+
+    padding: 0 40px p {
+        font-size: 20px;
+    }
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+
+    :last-child {
+        margin-left: 24px;
+    }
 }
