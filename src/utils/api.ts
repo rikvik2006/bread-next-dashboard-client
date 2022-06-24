@@ -17,3 +17,9 @@ export const FetchMutalGuilds = async (context: GetServerSidePropsContext) => {
         return { redirect: { destination: "/" } };
     }
 };
+
+export const fetchValidGuild = (id: string, headers: HeadersInit) => {
+    return fetch(`${API_URL}/guilds/${id}/permissions`, {
+        headers,
+    });
+};
