@@ -19,7 +19,9 @@ export const FetchMutalGuilds = async (context: GetServerSidePropsContext) => {
 };
 
 export const fetchValidGuild = (id: string, headers: HeadersInit) => {
-    return fetch(`${API_URL}/guilds/${id}/permissions`, {
+
+    //important
+    return fetch(new URL(`${API_URL}/guilds/${id}/permissions`), {
         headers,
     });
 };
