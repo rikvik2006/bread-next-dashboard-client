@@ -18,10 +18,26 @@ export const FetchMutalGuilds = async (context: GetServerSidePropsContext) => {
     }
 };
 
-export const fetchValidGuild = (id: string, headers: HeadersInit) => {
+export const fetchGuild = async (ctx: GetServerSidePropsContext) => {
+    const headers = validateCookies(ctx);
+    console.log(headers);
+    if (!headers) return { redirect: { destination: "/" } };
+    try {
+        const { data: guild } = await axios.get<Guild>(
+            `${API_URL}/guilds/${ctx.query.id}`, { headers, }
+        );
+        console.log(guild);
+        return { props: { guild } };
+    } catch (err) {
+        console.log(err);
+        return { redirect: { destination: "/" } };
+    }
+}
 
+export const fetchValidGuild = (id: string, headers: HeadersInit) => {
+    console.log(id);
     //important
-    return fetch(new URL(`${API_URL}/guilds/${id}/permissions`), {
+    return fetch(`${API_URL}/guilds/${id}/permissions`, {
         headers,
     });
 };
