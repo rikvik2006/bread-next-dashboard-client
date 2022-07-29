@@ -15,7 +15,6 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
     if (!headers) return NextResponse.redirect("/");
     if (!req.page.params) return NextResponse.redirect("/menu");
     const { id } = req.page.params;
-    console.log(id);
     const response = await fetchValidGuild(id.toString(), headers);
 
     //important
