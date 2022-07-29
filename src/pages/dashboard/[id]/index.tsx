@@ -1,11 +1,26 @@
 import { GetServerSidePropsContext, NextPage } from "next"
-import { ReactElement } from "react";
+import { ReactElement, useContext, useEffect } from "react";
 import { DashboardLayout } from "../../../components/layouts/dsashboard";
 import { fetchGuild } from "../../../utils/api";
-import { NextPageWithLayout } from "../../../utils/types";
+import { GuildContext } from "../../../utils/contexts/GuildContext";
+import { Guild, NextPageWithLayout } from "../../../utils/types";
 
-const DashboardPage: NextPageWithLayout = () => {
-    return <div className="page">Dashboard page</div>
+type Props = {
+    guild: Guild;
+};
+
+const DashboardPage: NextPageWithLayout<Props> = ({ guild }) => {
+    const { setGuild } = useContext(GuildContext);
+    useEffect(() => {
+        console.log(guild);
+        setGuild(guild);
+    }, []);
+    return (
+        <div className="page">
+            Dashboard page
+            <p>{guild.name}</p>
+        </div>
+    )
 }
 
 DashboardPage.getLayout = function (page: ReactElement) {
