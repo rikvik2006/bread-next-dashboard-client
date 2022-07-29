@@ -1,8 +1,14 @@
 import styles from "./index.module.scss";
 import { RiMenu3Line } from "react-icons/ri";
 import { useRouter } from "next/router";
+import { Guild } from "../../utils/types";
+import { FC } from "react";
 
-export const Appbar = () => {
+type Props = {
+    guild?: Guild;
+}
+
+export const Appbar: FC<Props> = ({ guild }) => {
     const router = useRouter()
 
     return (
@@ -12,7 +18,7 @@ export const Appbar = () => {
                 <p>Menu</p>
             </div>
             <div>
-                <p>{"Bread's Server"} </p>
+                <p>{guild?.name} </p>
             </div>
         </div>
     )
