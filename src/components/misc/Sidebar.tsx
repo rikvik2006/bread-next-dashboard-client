@@ -5,6 +5,9 @@ import { FaWrench } from "react-icons/fa";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import styles from "./index.module.scss";
 import { useRouter } from "next/router";
+import { Guild } from "../../utils/types";
+import { FC } from "react";
+import { getIcon } from "../../utils/helpers";
 
 const routers = [
     {
@@ -24,12 +27,24 @@ const routers = [
     },
 ];
 
-export const Sidebar = () => {
+type Props = {
+    guild?: Guild;
+};
+
+
+export const Sidebar: FC<Props> = ({ guild }) => {
     const router = useRouter();
 
     return (
         <div className={styles.sidebar}>
-            <Image className={styles.avatar} src="/favicon.ico" height={80} width={80} alt="guild_avatar" />
+            <Image
+                className={styles.avatar}
+                src={getIcon(guild)}
+                height={80}
+                width={80}
+                alt="guild_avatar"
+            />
+
             <div className={styles.icons}>
                 {routers.map((route) => <div key={route.name} onClick={() => router.push(route.getPath(router.query?.id!.toString()))}>{route.icon}</div>)}
             </div>
