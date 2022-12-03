@@ -31,6 +31,14 @@ type Props = {
     guild?: Guild;
 };
 
+type ImageType = {
+    className: void,
+    src: void,
+    height: void,
+    width: void,
+    alt: string,
+}
+
 
 export const Sidebar: FC<Props> = ({ guild }) => {
     const router = useRouter();
@@ -39,7 +47,7 @@ export const Sidebar: FC<Props> = ({ guild }) => {
         <div className={styles.sidebar}>
             <Image
                 className={styles.avatar}
-                src={getIcon(guild)}
+                src={getIcon(guild)!}
                 height={80}
                 width={80}
                 alt="guild_avatar"
